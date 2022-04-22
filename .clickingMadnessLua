@@ -119,3 +119,9 @@ d:Button("Teleport",function()
         teleportWorld(selectedWorld)
     end    
 end)
+
+local extraCredits;
+e:Dropdown("Credits",{"wYn","evan/worldwide"},true,function(value) 
+    ExtraCredits = value;
+    print(value)
+end)
