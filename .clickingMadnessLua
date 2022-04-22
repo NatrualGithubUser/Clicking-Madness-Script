@@ -11,26 +11,32 @@ local remotePath = game:GetService("ReplicatedStorage").Aero.AeroRemoteServices;
 
 
 function doTap()
-    while getgenv().autoTap == true do
-        local args = {[1] = 1}
-        remotePath.ClickService.Click:FireServer(unpack(args))
-        wait()
-    end
-end)
+    spawn(function()
+        while getgenv().autoTap == true do
+            local args = {[1] = 1}
+            remotePath.ClickService.Click:FireServer(unpack(args))
+            wait()
+        end
+    end)
+end
 
 function autoRebirth(rebirthAmount)
-     while getgenv().autoRebirth == true do
-         remotePath.RebirthService.BuyRebirths:FireServer(rebirthAmount)
-         wait()
-     end
-end)
+    spawn(function()
+        while getgenv().autoRebirth == true do
+            remotePath.RebirthService.BuyRebirths:FireServer(rebirthAmount)
+            wait()
+        end
+    end)
+end
 
 function buyEgg(eggType)
-    while wait() do
-        if not getgenv().bugEgg then break end;
-        remotePath.EggService.Purchase:FireServer(eggType)
-    end
-end)
+    spawn(function()
+        while wait() do
+            if not getgenv().bugEgg then break end;
+            remotePath.EggService.Purchase:FireServer(eggType)
+        end
+    end)
+end
 
 function getCurrentPlayerPOS()
     local plyr = game.Players.LocalPlayer;
