@@ -88,7 +88,7 @@ b:Toggle("Auto Tap",function(bool)
 end)
 
 local selectedRebirth;
-b:Dropdown("Rebirth Amount",{"1","10","100","1000","10000","100000","1000000"},true,function(value) --true/false, replaces the current title "Dropdown" with the option that t
+b:Dropdown("Rebirth Amount",{"1","10","100","1000","10000","100000","1000000","10000000","100000000","1000000000"},true,function(value) --true/false, replaces the current title "Dropdown" with the option that t
     selectedRebirth = value;
     print(value)
 end)
@@ -100,12 +100,16 @@ b:Toggle("Auto Rebirth",function(bool)
     end
 end)
 
-
+local selectedEgg;
+c:Dropdown("Selected Egg",{"basic","lava","desert","ocean","winter","toxic","candy","forest","storm","blocks","space","dominus","winter","infinity","future","city","moon","fire"},true,function(value) --true/false, replaces the current title "Dropdown" with the option that t
+    selectedEgg = value;
+    print(value)
+end)
 c:Toggle("Auto Buy Pet",function(bool)
     getgenv().bugEgg = bool
     print('Auto BuyEgg is: ', bool);
-    if bool then
-        buyEgg("basic");
+    if bool and selectedEgg then
+        buyEgg(selectedEgg);
     end
 end)
 
