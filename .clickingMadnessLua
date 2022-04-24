@@ -9,12 +9,14 @@ getgenv().autoBuy = false;
 
 local remotePath = game:GetService("ReplicatedStorage").Aero.AeroRemoteServices;
 
+local clickMod = require(game:GetService("Players").V0TROB.PlayerScripts.Aero.Controllers.UI.Click)
+clickMod:Click()
+
 
 function doTap()
     spawn(function()
         while getgenv().autoTap == true do
-            local args = {[1] = 1}
-            remotePath.ClickService.Click:FireServer(unpack(args))
+            clickMod:Click()
             wait()
         end
     end)
