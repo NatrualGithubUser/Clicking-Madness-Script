@@ -1,17 +1,16 @@
 -- didnt spend much time on this honestly this is just out of boredness --
 -- game file: https://www.roblox.com/games/5490351219/100X-CLICKS-Clicker-Madness --
--- credits to wYn#0001 for performing a youtube tutorial on this --
+-- credits to wYn#0001 for some of the code u see here --
 
---script--
-getgenv().autoTap = false;
-getgenv().autoRebirth = false;
-getgenv().autoBuy = false;
+-- script --
+getgenv().autoTap = false
+getgenv().autoRebirth = false
+getgenv().autoBuy = false
 
 local remotePath = game:GetService("ReplicatedStorage").Aero.AeroRemoteServices;
 
 local clickMod = require(game:GetService("Players").V0TROB.PlayerScripts.Aero.Controllers.UI.Click)
 clickMod:Click()
-
 
 function doTap()
     spawn(function()
@@ -74,10 +73,11 @@ local c = w:CreateFolder("Pet")
 
 local d = w:CreateFolder("Teleport")
 
-local e = w:CreateFolder("Extras")
+local e = w:CreateFolder("LocalPlayer")
 
-e:DestroyGui()
+local a = w:CreateFolder("Credits")
 
+a:DestroyGui()
 
 b:Toggle("Auto Tap",function(bool)
     getgenv().autoTap = bool
@@ -125,3 +125,25 @@ d:Button("Teleport",function()
         teleportWorld(selectedWorld)
     end    
 end)
+
+e:Slider("WalkSpeed",{
+    min = 1; 
+    max = 240; 
+    precise = true; 
+},function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (value)
+end)
+
+e:Slider("JumpPower",{
+    min = 1; 
+    max = 170; 
+    precise = true; 
+},function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = (value)
+end)
+
+a:Label("oscrr/V0TROB",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(244, 5, 9);
+    BgColor = Color3.fromRGB(0, 0, 0);
+}) 
